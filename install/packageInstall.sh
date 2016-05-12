@@ -7,14 +7,29 @@
 if which dnf; then
 	pkgmgr='dnf -y install';
 	pkglist=$rpmpkglist
+	
+	for i in $rpmrepolist; do
+		dnf config-manager --add-repo $i
+		dnf config-manager --enable-repo $i
+	done	
 
 elif which apt; then
 	pkgmgr='apt -y install';
 	pkglist=$debpkglist
+	
+	for i in $debrepolist; do
+		add-apt-repository $i
+	done
+	apt update
 
 elif which apt-get; then
 	pkgmgr='apt-get -y install';
 	pkglist=$debpkglist
+
+	for i in $debrepolist; do
+		add-apt-repository $i
+	done
+	apt-get update
 
 elif which pacman; then
 	pkgmgr='pacman --yes -sy'
