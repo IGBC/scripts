@@ -4,7 +4,7 @@ import os
 import sys
 from importlib.machinery import SourceFileLoader
 
-usage_text = "Usage: TODO: USAGE"
+usage_text = "Usage: \nsketch_runner.py \"sketch filename\" [arguments for sketch]\n Add \"#!/path/to/sketch_runner.py\" to sketches to make them executeable"
 
 # runner code
 if __name__ == "__main__":
