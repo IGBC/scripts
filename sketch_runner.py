@@ -4,7 +4,21 @@ import os
 import sys
 from importlib.machinery import SourceFileLoader
 
-usage_text = "Usage: \nsketch_runner.py \"sketch filename\" [arguments for sketch] \nAdd " \
+# Library imports (Imports only for use in the sketches library)
+import time
+# try to import RPi.GPIO if is available
+try:
+    import RPi.GPIO as GPIO
+    print("RPi.GPIO Loaded")
+except ImportError:
+    print("todo mask GPIO")
+    # import GPIO masking library so sketch still functions
+    # import fake.RPi.GPIO as GPIO # uncomment when available.
+    GPIO = 0
+    print("RPi.GPIO not available, you may not be running on a Pi compatible device. \nGPIO functions have been "
+          "masked with stubs, so sketches can continue to function.\n")
+
+usage_text = "Usage: \n   sketch_runner.py \"sketch filename\" [arguments for sketch] \n   Add " \
              "\"#!/path/to/sketch_runner.py\" to sketches to make them executable"
 
 # runner code
@@ -32,6 +46,11 @@ if __name__ == "__main__":
     # So let it throw them, as it spits useful information to the user anyway
     sketch = SourceFileLoader("sketch", sys.argv[1]).load_module()
 
+    # Forcibly jam the interpreters libraries down the sketches throat
+    setattr(sketch, "sys", sys)
+    setattr(sketch, "time", time)
+    setattr(sketch, "GPIO", GPIO)
+
     # Try to execute setup function if it doesn't exist no one cares, just run the loop.
     try:
         sketch.setup(sys.argv[2:])
@@ -42,33 +61,30 @@ if __name__ == "__main__":
         raise
 
     print("Running sketch" + "\n")
-    while True:
-        try:
+
+    try:
+        while True:
             sketch.loop()
 
-        # catch manual break.
-        except KeyboardInterrupt:
-            print("Keyboard Interrupt: Exiting")
+    # catch manual break.
+    except KeyboardInterrupt:
+        print("Keyboard Interrupt: Exiting")
 
-        # If function doesn't exist catch interpreter gibbering and print meaningful error message
+    # If function doesn't exist catch interpreter gibbering and print meaningful error message
+    except AttributeError:
+        print("No \"loop()\" Function found. Exiting")
+
+    # Any other error must be sent to the user.
+    except:
+        raise
+
+    finally:
+        # Try to call cleanup. If it doesn't exist mode along.
+        try:
+            sketch.cleanup()
         except AttributeError:
-            print("No \"loop()\" Function found. Exiting")
+            pass
 
         # Any other error must be sent to the user.
         except:
             raise
-
-        finally:
-            # Try to call cleanup. If it doesn't exist mode along.
-            try:
-                sketch.cleanup()
-            except AttributeError:
-                pass
-
-            # Any other error must be sent to the user.
-            except:
-                raise
-            break
-        # endtry
-    # endwhile
-# end
