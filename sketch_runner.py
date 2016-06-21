@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
     # Catching errors here appears to be impossible, as the inner engine throws it ignoring a try/catch
     # So let it throw them, as it spits useful information to the user anyway
-    sketch = SourceFileLoader("sketch", sys.argv[1]).load_module()
+    sketch = SourceFileLoader("sketch", module_path).load_module()
 
     # Forcibly jam the interpreters libraries down the sketches throat
     setattr(sketch, "sys", sys)
@@ -88,3 +88,4 @@ if __name__ == "__main__":
         # Any other error must be sent to the user.
         except:
             raise
+
