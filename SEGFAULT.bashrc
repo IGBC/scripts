@@ -37,3 +37,6 @@ alias cl="change_and_list"
 
 # Because fucking DNF
 alias doit="sudo !!"
+
+# Latest next gen video game
+echo $(tput bold) "Welcome to Terminal Simulator" $(date +%Y) $(tput sgr0)
