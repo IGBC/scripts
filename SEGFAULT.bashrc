@@ -16,14 +16,25 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # this is for the "fuck" command
-eval $(thefuck --alias)
+if command -v thefuck >/dev/null; then
+    eval $(thefuck --alias)
+fi
 
 # Actual user stuff
 
 # "cd" then "ls" function
-function change_and_list {
-	ls $@ -l --color
+function cl() {
 	cd $1
+	ls $@ -l --color
+}
+
+# More useful root
+function sudo() {
+    if [[ $@ == "-i" ]]; then
+        command sudo bash --rcfile $HOME/.bashrc
+    else
+        command sudo "$@"
+    fi
 }
 
 # Because ll doesn't roll off the tounge that nicely
@@ -31,9 +42,6 @@ alias ls="ls -l --color"
 
 # Because I always feel more badass typing "logout"
 alias logout="exit"
-
-# "cl" is shorter than "cd && ls" 
-alias cl="change_and_list"
 
 # Because fucking DNF
 alias doit="sudo !!"
