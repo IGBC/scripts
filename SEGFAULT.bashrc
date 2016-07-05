@@ -31,6 +31,7 @@ function cl() {
 # More useful root
 function sudo() {
     if [[ $@ == "-i" ]]; then
+        # if interactive then fire up a new bash session, and push this file to it
         command sudo bash --rcfile $HOME/.bashrc
     else
         command sudo "$@"
