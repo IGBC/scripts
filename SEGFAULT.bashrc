@@ -44,9 +44,6 @@ alias ls="ls -l --color"
 # Because I always feel more badass typing "logout"
 alias logout="exit"
 
-# Because fucking DNF
-alias doit="sudo !!"
-
 # Puts git in your prompt
 function __git_eread ()
 { 
