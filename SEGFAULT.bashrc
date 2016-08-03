@@ -239,6 +239,36 @@ function __git_ps1 () {
     return $exit
 }
 
+monitor() {
+    SESSION=$USER
+
+    if [  -z ${TMUX+x} ]; then # This tests if the variable is empty
+        tmux -2 new-session -d -s $SESSION
+        tmux new-window -t $SESSION:1 -n 'HWMon'&
+        PANE='0'
+    else
+        PANE=$TMUX_PANE
+    fi
+
+    tmux split-window -h
+    tmux send-keys "htop" C-m
+    if command -v nvidia-smi >/dev/null; then
+        tmux split-window -v
+        tmux send-keys "watch -n 0.2 nvidia-smi" C-m
+    fi
+    tmux select-pane -t $PANE
+    tmux send-keys "watch -n 0.2 sensors" C-m
+    tmux split-window -v
+    tmux send-keys "dmesg -w" C-m
+
+    if [  -z ${TMUX+x} ]; then
+        # Set default window
+        tmux select-window -t $SESSION:1
+        # Attach to session
+        tmux -2 attach-session -t $SESSION
+    fi
+}
+
 # Latest next gen video game
 echo $(tput bold) "Welcome to Terminal Simulator" $(date +%Y) $(tput sgr0)
 
@@ -261,7 +291,7 @@ __C_White="\[\033[1;37m\]"
 __C_Reset="\[\033[0m\]"
 
 if [ ${USER} == "root" ]; then
-    PS1="[${__C_LightBlue}\A ${__C_Red}\u${__C_Reset}@${__C_LightPurple}\h ${__C_Cyan}\w${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]# "
+    PS1="[${__C_LightBlue}\A ${__C_Red}\u${__C_Reset}@${__C_LightPurple}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]# "
 else
-    PS1="[${__C_LightBlue}\A ${__C_Green}\u${__C_Reset}@${__C_LightPurple}\h ${__C_Cyan}\w${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]$ "
+    PS1="[${__C_LightBlue}\A ${__C_Green}\u${__C_Reset}@${__C_LightPurple}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]$ "
 fi
