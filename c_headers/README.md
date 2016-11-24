@@ -1,7 +1,7 @@
-c_headers
----------
 Custom C/C++ header files of IGBC (SEGFAULT)
-\[will not actually cause segfaults\]
+---------
+
+**[will not actually cause segfaults]**
 
 These files contain various macros used by the author
 to make every day C/C++ hacking easier. (C++ is hard OK?)
