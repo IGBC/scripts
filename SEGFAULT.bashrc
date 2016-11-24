@@ -240,7 +240,13 @@ function __git_ps1 () {
 }
 
 monitor() {
-    SESSION=$USER
+    SESSION="__HWMON"
+
+    if tmux has-session -t $SESSION; then
+        tmux -2 attach-session -t $SESSION
+        return
+    fi
+
 
     if [  -z ${TMUX+x} ]; then # This tests if the variable is empty
         tmux -2 new-session -d -s $SESSION
