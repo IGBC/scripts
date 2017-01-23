@@ -1,7 +1,7 @@
-char[2] igbc_char_hex(char num) {
+char* igbc_char_hex(char num) {
 	char lower = num & 0x0F;
 	char upper = (num >> 4) & 0x0F;
-	char out[2];
+	char *out = (char*)malloc(2);
 	switch (upper) {
 	case 0x00: out[0] = '0'; break;
 	case 0x01: out[0] = '1'; break;
@@ -43,12 +43,19 @@ char[2] igbc_char_hex(char num) {
 	return out;
 }
 
+/** this is for turning big streams of data into hex, 
+ * if you want to print an int use `printf(%#010X, val)`
+ */
+
 char *__hexify(void* data, int size) {
-	char *out = malloc(size * 3); // 3 chars per byte.
+	char *out = (char*) malloc(size * 3); // 3 chars per byte.
 	int i = 0;
 	for (i = 0; i < size; i++) {
-		out[i * 3] = igbc_char_hex(data[i]);
+        	char *next = igbc_char_hex(((char*)data)[i]);
+		out[i * 3] = next[0];
+        	out[(i * 3) + 1] = next[1];
 		out[(i * 3) + 2] = ' ';
+		free(next);
 	}
 	out[(size * 3) - 1] = '\0'; //add null terminator
 	return out;
