@@ -295,9 +295,11 @@ __C_Yellow="\[\033[1;33m\]"
 __C_LightGray="\[\033[0;37m\]"
 __C_White="\[\033[1;37m\]"
 __C_Reset="\[\033[0m\]"
+__C_HOST="\[\033[32;38;5;$((0x$(hostname | md5sum | cut -f1 -d' ' | tr -d '\n' | tail -c2)))m\]"
+
 
 if [ ${USER} == "root" ]; then
-    PS1="[${__C_LightBlue}\A ${__C_Red}\u${__C_Reset}@${__C_LightPurple}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]# "
+    PS1="[${__C_LightBlue}\A ${__C_Red}\u${__C_Reset}@${__C_HOST}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]# "
 else
-    PS1="[${__C_LightBlue}\A ${__C_Green}\u${__C_Reset}@${__C_LightPurple}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]$ "
+    PS1="[${__C_LightBlue}\A ${__C_Green}\u${__C_Reset}@${__C_HOST}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]$ "
 fi
