@@ -1,0 +1,3 @@
+#Sets spindown timer to 10 minutes and immediately spins down all ATA drives.
+for i in $(ls /dev/disk/by-path/ | grep "ata" | grep -v "part"); do sudo hdparm -S 120 /dev/disk/by-path/$i; done
+for i in $(ls /dev/disk/by-path/ | grep "ata" | grep -v "part"); do sudo hdparm -y /dev/disk/by-path/$i; done
