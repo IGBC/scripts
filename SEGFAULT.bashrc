@@ -52,6 +52,20 @@ function __git_eread ()
     test -r "$f" && read "$@" < "$f"
 }
 
+# Custom compiler setups
+function  gccc(){
+     gcc -g -Wall -ansi -lm -o $1.out $1
+    }
+
+
+# Git tree view
+function git() {
+    if [[ $1 == "tree" ]]; then
+        command git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    else
+        command git "$@"
+    fi
+}
 
 function __git_ps1 () { 
     local exit=$?;
