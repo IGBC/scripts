@@ -1,0 +1,14 @@
+#!/bin/bash
+TIME=$(date -Iseconds)
+FILENAME=".temprun-$TIME"
+
+echo "#!/bin/bash" > $FILENAME
+nano $FILENAME
+
+read -p "Execute File? [y/N]: " INPUT
+
+if [ "$INPUT" = "y" ] || [ "$INPUT" = "Y" ] ; then
+    chmod u+x $FILENAME
+    bash $FILENAME
+fi
+rm $FILENAME
