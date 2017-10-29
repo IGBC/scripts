@@ -1,14 +1,25 @@
 #!/bin/bash
+LANG=$1
+if [ "$1" = "" ] ; then
+    INT="/bin/bash"
+else
+    INT="$(which $1)"
+fi
+if [ "$INT" = "" ] ; then
+    echo "No interpreter found for '$1'. Exiting."
+    exit
+fi
+
 TIME=$(date -Iseconds)
 FILENAME=".temprun-$TIME"
 
-echo "#!/bin/bash" > $FILENAME
+echo "#!$INT" > $FILENAME
 nano $FILENAME
 
 read -p "Execute File? [y/N]: " INPUT
 
 if [ "$INPUT" = "y" ] || [ "$INPUT" = "Y" ] ; then
     chmod u+x $FILENAME
-    bash $FILENAME
+    $INT $FILENAME
 fi
 rm $FILENAME
