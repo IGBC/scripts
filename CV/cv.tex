@@ -20,6 +20,7 @@
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[11pt, a4paper]{awesome-cv}
 
+\usepackage{hyperref}
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
@@ -63,7 +64,7 @@
 \github{IGBC}
 % \linkedin{posquit0}
 % \gitlab{gitlab-id}
-\stackoverflow{5837486}{lord-nibbler}
+% \stackoverflow{5837486}{lord-nibbler}
 % \twitter{@twit}
 % \skype{skype-id}
 % \reddit{reddit-id}
@@ -162,9 +163,9 @@
 \cvsection{Extra Curricular}
 \begin{cventries}
   \cventry
-    {I create esoteric open source software in my free time:} % Subtitle
+    {I create open source software in my free time:} % Subtitle
     {Personal Software projects} % Title
-    {}{} % Drop left fields
+    {}{\hyperref[https://github.com/IGBC]{''https://github.com/IGBC''}} % Drop left fields
     {
     \begin{cvitems} % Description(s) of tasks/responsibilities
         \item {\textbf{CUE} (Rust): Desktop Environment running on the console (Currently in Development)}
@@ -183,9 +184,9 @@
 
   \cventry
     {Ask For "SEGFAULT"} % Subtitle
-    {Active CCC Community Member} % Title
+    {Active Chaos Comuter Club (CCC) Community Member} % Title
     {}{} % Drop left fields
-    {I am an active Member of the c-base, and a regular contribute to other Berlin hacker-spaces, and attend events.}
+    {I am an active Member of the c-base, and a regular contributor to other Berlin hacker-spaces.}
 \end{cventries}
 
 \end{document}
