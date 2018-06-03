@@ -38,6 +38,9 @@ function sudo() {
     fi
 }
 
+# Fucking Computers
+alias shit='sudo $(history -p !!)'
+
 # Because ll doesn't roll off the tounge that nicely
 alias ls="ls -l --color"
 
