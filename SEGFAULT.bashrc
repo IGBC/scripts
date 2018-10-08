@@ -20,6 +20,12 @@ if command -v thefuck >/dev/null; then
     eval $(thefuck --alias)
 fi
 
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=~/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
 # Actual user stuff
 
 # "cd" then "ls" function
