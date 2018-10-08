@@ -44,11 +44,17 @@ function sudo() {
     fi
 }
 
+# Fucking Computers
+alias shit='sudo $(history -p !!)'
+
 # Because ll doesn't roll off the tounge that nicely
 alias ls="ls -l --color"
 
 # Because I always feel more badass typing "logout"
 alias logout="exit"
+
+# Get the location of this script file
+SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 # Puts git in your prompt
 function __git_eread ()
@@ -323,3 +329,6 @@ if [ ${USER} == "root" ]; then
 else
     PS1="[${__C_LightBlue}\A ${__C_Green}\u${__C_Reset}@${__C_HOST}\h ${__C_Cyan}\W${__C_Brown}\$(__git_ps1 \" (%s)\")${__C_Reset}]$ "
 fi
+
+#This adds the inner scripts dir to the path so we can call them
+export PATH="$PATH:${SRC_DIR}/scripts"
