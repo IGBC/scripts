@@ -1,0 +1,17 @@
+host="Host: $(hostname)"
+up=$(uptime | sed -e 's/^[[:space:]]*//')
+netline=$(ip a | grep inet | sed -e 's/^[[:space:]]*//' | cut -d " " -f-2 | sort)
+net=$"$(for i in $netline; do echo ${i}; done)"
+pubip="Public IP: $(dig +short myip.opendns.com @resolver1.opendns.com)"
+
+if command -v cowsay >/dev/null; then 
+	output=$(cowsay "${host} --------------------------------------- ${up} --------------------------------------- ${net} --------------------------------------- ${pubip}")
+else
+	output=$(echo "${host} -- ${up}";echo "Addresses:"; echo "${netline}"; echo "${pubip}")
+fi
+
+if command -v lolcat >/dev/null; then
+	lolcat "${output}"
+else
+	echo "${output}"
+fi
