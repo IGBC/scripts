@@ -20,7 +20,7 @@ case "$extention" in
 		chmod u+x $1
 		;;
 	py)
-		echo "#!/usr/bin/python" > $1
+		echo "#!/usr/bin/env python" > $1
 		chmod u+x $1
 		;;
 	rb)
