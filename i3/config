@@ -134,7 +134,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute  $(pacmd lis
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
-# Enable tapping and natural scrolling on the hinkPad
+# Enable tapping and natural scrolling on the thinkPad
 exec --no-startup-id xinput set-prop 13 282 1
 exec --no-startup-id xinput set-prop 13 290 1
 
@@ -146,7 +146,11 @@ exec --no-startup-id nm-applet
 
 # Start notification deamon (for some reason not in the path)
 exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
-####
+
+# Set up locker
+bindsym XF86ScreenSaver exec i3lock -i /home/lauren/.i3/desktop.png &
+exec xautolock -time 5 -locker 'i3lock -i /home/lauren/.i3/desktop.png' &
+#######################################
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
