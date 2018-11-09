@@ -150,6 +150,9 @@ exec --no-startup-id /usr/lib/mate-notification-daemon/mate-notification-daemon
 # Set up locker
 bindsym XF86ScreenSaver exec i3lock -i /home/lauren/.i3/desktop.png &
 exec xautolock -time 5 -locker 'i3lock -i /home/lauren/.i3/desktop.png' &
+
+# Set Background
+exec feh --bg-fill /home/lauren/.i3/desktop.png
 #######################################
 
 # reload the configuration file
@@ -194,9 +197,9 @@ bar {
 
 
 #------- Startup applications -------#
-exec --no-startup-id i3-msg 'workspace 1:Home; exec /usr/bin/firefox'
-exec --no-startup-id i3-msg 'workspace 2:Comms; exec /usr/bin/signal-desktop'
-exec --no-startup-id i3-msg 'workspace 2:Comms; exec /usr/bin/firefox -new-window https://twitter.com'
-exec --no-startup-id i3-msg 'workspace 3:Mail; exec /usr/bin/evolution'
-exec --no-startup-id i3-msg 'workspace 4:Term; exec /usr/bin/terminator'
-exec --no-startup-id i3-msg 'workspace 1:Home'
+exec i3-msg 'workspace 1:Home; exec /usr/bin/firefox'
+exec i3-msg 'workspace 2:Comms; exec /usr/bin/signal-desktop'
+exec i3-msg 'workspace 2:Comms; exec /usr/bin/firefox -new-window https://twitter.com'
+exec i3-msg 'workspace 3:Mail; exec /usr/bin/evolution'
+exec i3-msg 'workspace 4:Term; exec /usr/bin/terminator'
+exec i3-msg 'workspace 1:Home'
