@@ -53,6 +53,9 @@ alias ls="ls -l --color"
 # Because I always feel more badass typing "logout"
 alias logout="exit"
 
+alias highlight="highlight --out-format xterm256"
+alias less="less -R"
+
 # Get the location of this script file
 SRC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
