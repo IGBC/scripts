@@ -1,6 +1,6 @@
 .PHONY: all, clean, cleanall
 
-CC = xelatex
+CC = lualatex
 
 cv.pdf: cv.tex
 	$(CC) $<
