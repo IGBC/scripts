@@ -21,6 +21,8 @@
 \documentclass[11pt, a4paper]{awesome-cv}
 
 \usepackage{hyperref}
+
+\usepackage{hyperref}
 % Configure page margins with geometry
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
@@ -60,10 +62,10 @@
 
 \mobile{(+44)7932784071}
 \email{lauren.brown@mailbox.org}
-%\homepage{https://sigsegv.tech}
+\homepage{https://sigsegv.tech}
 \github{IGBC}
 % \linkedin{posquit0}
-% \gitlab{gitlab-id}
+\gitlab{IGBC}
 % \stackoverflow{5837486}{lord-nibbler}
 % \twitter{@twit}
 % \skype{skype-id}
@@ -108,7 +110,7 @@
     {University of Surrey} % Institution
     {Guildford, England} % Location
     {Oct. 2014 - Aug. 2015; Oct. 2018 - Present} % Date(s)
-    {Expected to Graduate in July 2021 with a 1st class Master's degree}
+    {Expected to Graduate in July 2021 with a 2-1 class Master's degree. Bacholors thesis in adding Live Patching to FreeRTOS}
     
   \cventry
     {4 A levels} % Degree
@@ -161,24 +163,18 @@
 \cvsection{Extra Curricular}
 \begin{cventries}
   \cventry
-    {I create open source software in my free time:} % Subtitle
-    {Personal Software projects} % Title
-    {}{\href{https://github.com/IGBC}{github.com/IGBC}} % Drop left fields
-    {
-    \begin{cvitems} % Description(s) of tasks/responsibilities
-        \item {\textbf{CUE} (Rust): Desktop Environment running on the console (Currently in Development)}
-        \item {\textbf{Pysketch} (Python): Framework for taking the boilerplate code out of simple scripts (Finished)}
-        \item {\textbf{L-CAD} (C): single gate level simulation of Boolean Logic in the time domain for identifying hazards. (Abandonware)}
-        \item {\textbf{SegNAND} (Electronics) \& \textbf{Blocky-Synth} (C++): My experiments with electronic music, trying to make interesting sounding instruments.}
-      \end{cvitems} 
-     }
-
-  \cventry
     {Created and Ran a Society at Surrey University's Students Union}
     {Sythesiser and Electronic Music Society}
     {}{}
     {Supporting students in creating DIY musical instruments.}
-  
+
+  \cventry
+  {Volenteering in undergraduate labs}
+  {Lab PALS scheme}
+  {}{}
+  {Supporting teaching, by providing assistance to students in regular lab sessions}
+  }
+
   \cventry
     {Open Source Book Scanner - Lead Electronics Engineer.} % Subtitle
     {Libreflip} % Title
@@ -186,16 +182,47 @@
     {Team Project to create an automatic page turning book scanner.}
 
   \cventry
+    {I create open source software in my free time:} % Subtitle
+    {Personal Software projects} % Title
+    {}{\href{https://github.com/IGBC}{github.com/IGBC}} % Drop left fields
+    {
+    \begin{cvitems} % Description(s) of tasks/responsibilities
+        \item {\href{https://github.com/IGBC/IDE-Test-Jig}{\textbf{idetestjig}} (C): Building a bit banged IDE interface on an STM32. (For use in an audio recorder.)}
+        \item {\href{https://github.com/IGBC/Rustic-Zen}{\textbf{Rustic Zen}} (C++ + Rust): Optimising then Reimplementing an artistic ray tracer first in C++ then Rust.}
+        \item {\href{https://github.com/Neotron-Compute}{\textbf{Neotron}} (Rust + KiCAD): Contributing to the development of an open MCU based SBC, with rust firmware.}
+        \item {Founding Member of the Rust \href{https://github.com/Rust-Retro}{\textbf{Retro Technologies Working Group (RWG)}}, an unoffical working group with the goal to bring rust to as much outdated hardware as possible.}
+        \item {\href{https://gitlab.com/IGBC/SegNAND}{\textbf{SegNAND}} (Electronics) \& \href{https://github.com/IGBC/audio-af}{\textbf{Audio-AF}} (Rust) (Just Started): My experiments with electronic music, trying to make interesting sounding instruments.}
+      \end{cvitems} 
+     }
+
+  \cventry
     {Ask For "SEGFAULT"} % Subtitle
     {Active Chaos Computer Club (CCC) Community Member} % Title
     {}{} % Drop left fields
-    {Until recently I was an active Member of the c-base, and a regular contributor to other Berlin hacker-spaces.}
+    {Until returning to university I was a regular contributor to Berlin hacker-spaces.}
 
-  %\cventry
-  %  {} % Subtitle
-  %  {Holds Full UK Driving Licence} % Title
-  %  {}{} % Drop left fields
-  %  {}
 \end{cventries}
+
+\cvsection{Other Skills}
+\begin{cventries}
+  \cventry
+   {} % Subtitle
+   {Holds full UK Driving licence} % Title
+   {}{} % Drop left fields
+   {}
+
+  \cventry
+   {} % Subtitle
+   {Speaks native English and limited German} % Title
+   {}{} % Drop left fields
+   {}
+
+   \cventry
+   {} % Subtitle
+   {Has been "Daily Driving" Linux for almost 7 years} % Title
+   {}{} % Drop left fields
+   {}
+\end{cventries}   
+
 
 \end{document}
